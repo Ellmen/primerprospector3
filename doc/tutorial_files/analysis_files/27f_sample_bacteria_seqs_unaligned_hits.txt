@@ -1,0 +1,30 @@
+# Primer: 27f 5'-AGAGTTTGATCMTGGCTCAG-3'
+# Input fasta file: sample_bacteria_seqs_unaligned.fasta
+# Parameters
+# 3' length: 5
+# non 3' mismatch penalty: 0.40 per mismatch
+# 3' mismatch penalty: 1.00 per mismatch
+# last base mismatch penalty: 3.00
+# non 3' gap penalty: 1.00 per gap
+# 3' gap penalty: 3.00 per gap
+# Note - seq hit and primer hit are the best local pairwise alignment results for a given sequence and primer pair.  A gap in seq hit represents a deletion in the sequence, whereas a gap in the primer hit signifies an insertion in the target sequence.
+#
+# seq ID, seq hit, primer hit, hit start position, non 3' mismatches, 3' mismatches (except last base), last base mismatch, non 3' gaps, 3' gaps, overall weighted score, hits sequence end 
+11544,TTGATCCTGGCTCAG,TTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+57484,AGGGTGCAAGCGTTACTCGG,AGAGTTTGATCMTGGCTCAG,478,8,1,False,0,0,4.2,False
+103547,AGAGTTTGATTCTGGCTCAG,AGAGTTTGATCMTGGCTCAG,5,1,0,False,0,0,0.4,False
+120123,AGTGAAAGCCCGGGGCTCAA,AGAGTTTGATCMTGGCTCAG,551,8,0,True,0,0,6.2,False
+127471,AGAGTTTGATCCTGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+199390,AGAGTTTGATCCTGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+214073,AGAGTTTGATCATGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+235381,AGAGGATAAGCGAATCTCAG,AGAGTTTGATCMTGGCTCAG,1233,8,0,False,0,0,3.2,False
+254376,AGAGTTTGATTATGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,1,0,False,0,0,0.4,True
+256904,GAGTTTGATCCTGGCTCAG,GAGTTTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+286896,AGAGTCTTTTCCTGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,3,0,False,0,0,1.2,True
+300250,AGAGTTTGATCCTGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+300253,AGAGTTTGATCCTGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+300257,AGAGTTTGATCCTGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+339039,AGAGTTTGATCATGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,0,0,False,0,0,0.0,True
+359103,CGCTAGTAATCGCGGATCAG,AGAGTTTGATCMTGGCTCAG,1278,8,1,False,0,0,4.2,False
+359108,AGGGTTTGATTATGGCTCAG,AGAGTTTGATCMTGGCTCAG,0,2,0,False,0,0,0.8,True
+370251,ATCGAATGAGCCTGCGTCGG,AGAGTTTGATCMTGGCTCAG,20,6,2,False,0,0,4.4,False

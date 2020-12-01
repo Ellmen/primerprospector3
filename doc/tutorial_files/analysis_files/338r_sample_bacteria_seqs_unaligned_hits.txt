@@ -1,0 +1,30 @@
+# Primer: 338r 5'-GCTGCCTCCCGTAGGAGT-3'
+# Input fasta file: sample_bacteria_seqs_unaligned.fasta
+# Parameters
+# 3' length: 5
+# non 3' mismatch penalty: 0.40 per mismatch
+# 3' mismatch penalty: 1.00 per mismatch
+# last base mismatch penalty: 3.00
+# non 3' gap penalty: 1.00 per gap
+# 3' gap penalty: 3.00 per gap
+# Note - seq hit and primer hit are the best local pairwise alignment results for a given sequence and primer pair.  A gap in seq hit represents a deletion in the sequence, whereas a gap in the primer hit signifies an insertion in the target sequence.
+#
+# seq ID, seq hit, primer hit, hit start position, non 3' mismatches, 3' mismatches (except last base), last base mismatch, non 3' gaps, 3' gaps, overall weighted score, hits sequence end 
+11544,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,307,0,0,False,0,0,0.0,False
+57484,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,302,0,0,False,0,0,0.0,False
+103547,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,330,0,0,False,0,0,0.0,False
+120123,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,311,0,0,False,0,0,0.0,False
+127471,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,329,0,0,False,0,0,0.0,False
+199390,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,321,0,0,False,0,0,0.0,False
+214073,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,306,0,0,False,0,0,0.0,False
+235381,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,312,0,0,False,0,0,0.0,False
+254376,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,331,0,0,False,0,0,0.0,False
+256904,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,325,0,0,False,0,0,0.0,False
+286896,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,330,0,0,False,0,0,0.0,False
+300250,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,329,0,0,False,0,0,0.0,False
+300253,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,331,0,0,False,0,0,0.0,False
+300257,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,322,0,0,False,0,0,0.0,False
+339039,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,312,0,0,False,0,0,0.0,False
+359103,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,278,0,0,False,0,0,0.0,False
+359108,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,322,0,0,False,0,0,0.0,False
+370251,ACTCCTACGGGAGGCAGC,ACTCCTACGGGAGGCAGC,135,0,0,False,0,0,0.0,False

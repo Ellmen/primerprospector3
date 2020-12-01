@@ -1,0 +1,6 @@
+# Sample of known primers
+# primer_id <tab> primer sequence (5'->3')  <tab> primer citation
+27f	AGAGTTTGATCMTGGCTCAG	
+806r	GGACTACVSGGGTATCTAAT	
+515f	GTGCCAGCMGCCGCGGTAA	
+338r	GCTGCCTCCCGTAGGAGT

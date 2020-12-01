@@ -1,0 +1,5 @@
+# Sample barcodes for testing check_primers_barcode_dimers.py
+ATCGATTACGAC
+CGGAGGACGATT
+CAGCATACGATC
+CGAAATACAGAC

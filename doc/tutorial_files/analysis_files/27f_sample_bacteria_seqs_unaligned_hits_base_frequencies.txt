@@ -1,0 +1,15 @@
+# Base frequency report for optimizing primers
+# This file is tab separated for easy importation into Excel or other spreadsheets
+# Degenerate DNA codes (listed here for convenience): R=AG, Y=CT, M=AC, K=GT, W=AT, S=CG, B=CGT, D=AGT, H=ACT, V=ACG, N=ACGT
+# The primer is listed in 5' to 3' orientation.
+# Hits file used to generate base frequency data: 27f_sample_bacteria_seqs_unaligned_hits.txt
+# Score type used: weighted_score
+# Score threshold: 2
+# Primer sequence: AGAGTTTGATCMTGGCTCAG
+#
+Primer	A	G	A	G	T	T	T	G	A	T	C	M	T	G	G	C	T	C	A	G
+Base
+A	1.00	0.00	0.91	0.00	0.00	0.00	0.00	0.00	0.91	0.00	0.00	0.36	0.00	0.00	0.00	0.00	0.00	0.00	1.00	0.00
+T	0.00	0.00	0.00	0.00	1.00	0.91	1.00	0.09	0.09	1.00	0.27	0.00	1.00	0.00	0.00	0.00	1.00	0.00	0.00	0.00
+C	0.00	0.00	0.00	0.00	0.00	0.09	0.00	0.00	0.00	0.00	0.73	0.64	0.00	0.00	0.00	1.00	0.00	1.00	0.00	0.00
+G	0.00	1.00	0.09	1.00	0.00	0.00	0.00	0.91	0.00	0.00	0.00	0.00	0.00	1.00	1.00	0.00	0.00	0.00	0.00	1.00

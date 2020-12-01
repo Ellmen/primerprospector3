@@ -1,0 +1,20 @@
+339039	Bacteria;Proteobacteria;Alphaproteobacteria;Rhodospirillales;unclassified_Rhodospirillales
+199390	Bacteria;Chloroflexi;Anaerolineae;Caldilineae;Caldilineales;Caldilineacea;unclassified_Caldilineacea
+370251	Bacteria;Proteobacteria;Gammaproteobacteria;unclassified_Gammaproteobacteria
+11544	Bacteria;Actinobacteria;Actinobacteria;Actinobacteridae;Actinomycetales;unclassified_Actinomycetales
+256904	Bacteria
+286896	Bacteria;Actinobacteria;Actinobacteria;Actinobacteridae;Actinomycetales;Micrococcineae;Micrococcaceae;Kocuria
+127471	Bacteria;Bacteroidetes;Sphingobacteria;Sphingobacteriales;Crenotrichaceae;Terrimonas
+103547	Bacteria;Proteobacteria;Gammaproteobacteria;Legionellales;Coxiellaceae;Coxiella
+214073	Bacteria;Cyanobacteria;Cyanobacteria;Chloroplast;Streptophyta
+254376	Bacteria;Firmicutes;"Clostridia";Clostridiales;"Lachnospiraceae";Roseburia
+120123	Bacteria;Firmicutes;"Clostridia";Clostridiales;"Lachnospiraceae";"Lachnospiraceae Incertae Sedis"
+300253	Bacteria;Firmicutes;"Clostridia";Clostridiales;"Ruminococcaceae";unclassified_"Ruminococcaceae"
+300250	Bacteria;Firmicutes;"Clostridia";Clostridiales;"Lachnospiraceae";unclassified_"Lachnospiraceae"
+359103	Bacteria;Firmicutes;"Bacilli";Bacillales;Bacillaceae;"Bacillaceae 1";Saccharococcus
+300257	Bacteria;Chlorobi;Chlorobia;Chlorobiales;Chlorobiaceae;Chlorobium
+359108	Bacteria;Proteobacteria;Gammaproteobacteria;Alteromonadales;unclassified_Alteromonadales
+235381	Bacteria;Deferribacteres;Deferribacteres;Deferribacterales;Deferribacteraceae;Mucispirillum
+57484	Bacteria;Proteobacteria;Epsilonproteobacteria;Campylobacterales;Helicobacteraceae;Sulfurimonas
+215305	Archaea;Crenarchaeota;Thermoprotei;unclassified_Thermoprotei
+155634	Archaea;Euryarchaeota;Methanobacteria;Methanobacteriales;Methanobacteriaceae;Methanosphaera

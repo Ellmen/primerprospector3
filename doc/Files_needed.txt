@@ -1,0 +1,12 @@
+Need overall tutorial, with links to sample files to use for each step.
+
+(multiple) sample aligned, unaligned fasta sequences, known primers.  Taxonomy mapping file (also link to Greengenes).  Need to contact silva about hosting taxonomy 
+mapping files on their site.  Need formatted primers file.
+
+Example output files from each sections, as well as graphs for primer analysis component.
+
+Cite paper.
+
+
+
+

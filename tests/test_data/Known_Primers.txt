@@ -1,0 +1,8 @@
+# Current Univeral Primers
+# primer_id <tab> primer sequence (5'->3')  <tab> primer citation
+1f	ATTCCGGTTGATCCTGC	 Baker and Cowan, 2004
+21f	TTCCGGTTGATCCYGCCGGA	 Ellis 2008, DeLong 1992 (also listed as F1 in Baker and Cowan, 2004)
+27f	AGAGTTTGATCMTGGCTCAG	
+testf	AGTAACACGT
+test2f	AGTAACRCGT
+
