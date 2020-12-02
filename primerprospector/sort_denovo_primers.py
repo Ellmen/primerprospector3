@@ -69,7 +69,7 @@ from operator import itemgetter
 from os import remove
 from copy import deepcopy
 
-from cogent3 import load_unaligned_seqs, DNA
+from cogent3 import make_aligned_seqs, DNA
 from cogent3.core.alphabet import AlphabetError
 from cogent3.core.moltype import IUPAC_DNA_ambiguities, IUPAC_DNA_chars,\
  IUPAC_gap, make_pairs, DnaStandardPairs
@@ -114,15 +114,15 @@ class Primer(object):
         self.header=header
         self.f_primer_seqs=f_primer_seqs
         self.r_primer_seqs=r_primer_seqs
-        self.f_consensus="".join(f_primer_seqs.majorityConsensus())
+        self.f_consensus="".join(f_primer_seqs.majority_consensus())
         # Generate Reverse complement for the reverse primer
-        self.r_consensus=DNA.rc("".join(r_primer_seqs.majorityConsensus()))
-        self.f_varied=f_primer_seqs.variablePositions()
-        self.r_varied=r_primer_seqs.variablePositions()
-        self.f_base_freq=f_primer_seqs.columnProbs()
-        self.r_base_freq=r_primer_seqs.columnProbs()
-        self.f_uncertainties=f_primer_seqs.uncertainties()
-        self.r_uncertainties=r_primer_seqs.uncertainties()
+        self.r_consensus=DNA.rc("".join(r_primer_seqs.majority_consensus()))
+        self.f_varied=f_primer_seqs.variable_positions()
+        self.r_varied=r_primer_seqs.variable_positions()
+        self.f_base_freq=pwm_to_dict(f_primer_seqs.probs_per_pos())
+        self.r_base_freq=pwm_to_dict(r_primer_seqs.probs_per_pos())
+        self.f_uncertainties=f_primer_seqs.entropy_per_pos()
+        self.r_uncertainties=r_primer_seqs.entropy_per_pos()
         # Generate filtered results
         self.filtered_f_base_freq=\
          self.filter_base_freq(self.f_base_freq,variable_pos_freq)
@@ -148,8 +148,8 @@ class Primer(object):
 
         
         # IUPAC consensus results, generally very degenerate
-        self.f_IUPAC=f_primer_seqs.IUPACConsensus().replace("?",".")
-        self.r_IUPAC=DNA.rc(r_primer_seqs.IUPACConsensus().replace("?","."))
+        self.f_IUPAC=f_primer_seqs.iupac_consensus().replace("?",".")
+        self.r_IUPAC=DNA.rc(r_primer_seqs.iupac_consensus().replace("?","."))
         
         # normal, complement, reverse, and reverse-complement forms of the 
         # forward and reverse primer for testing with overlap with known primers
@@ -188,7 +188,7 @@ class Primer(object):
         Will retain the base(s) with the highest frequency, regardless
         of variable_pos_freq value
         
-        base_freq: contains base frequencies, generated from columnProbs()
+        base_freq: contains base frequencies, generated from column_probs()
          method of sequence collection object
         variable_pos_freq: frequency at which a particular base has to appear
          to be considered when making the filtered degenerate version of new
@@ -202,7 +202,7 @@ class Primer(object):
             for base in base_pos.keys():
                 if base_pos[base]>highest_freq:
                     highest_freq=base_pos[base]
-            for base in base_pos.keys():
+            for base in list(base_pos.keys()):
                 if base_pos[base]<variable_pos_freq and \
                  base_pos[base]<highest_freq:
                     del base_pos[base]
@@ -218,7 +218,7 @@ class Primer(object):
         degenerate IUPAC codes to determine the appropriate IUPAC code
         for the base position.
         
-        filtered_base_freq: contains filtered version of columnProbs()
+        filtered_base_freq: contains filtered version of column_probs()
          generated base frequencies to remove low frequency occuring bases."""
 
         
@@ -260,6 +260,15 @@ class KnownPrimer(object):
              "has a length less than the specified 3' length %d " % trunc_len)
         self.numeric_seq = convert_to_numeric(seq)
 
+
+
+def pwm_to_dict(pwm):
+    return [{
+        'T': pos[0],
+        'A': pos[1],
+        'C': pos[2],
+        'G': pos[3],
+    } for pos in pwm]
 
 
 def analyze_primers(hits_file,
@@ -370,8 +379,8 @@ def build_primers(primers_data,
         forward_seqs = forward_primers[n][1:]
         reverse_seqs = reverse_primers[n][1:]
         primers.append(Primer(header,
-         load_unaligned_seqs(data=forward_seqs,moltype=DNA,label_to_name=lambda x: x),
-         load_unaligned_seqs(data=reverse_seqs,moltype=DNA,label_to_name=lambda x: x),
+         make_aligned_seqs(data=forward_seqs,moltype=DNA,label_to_name=lambda x: x),
+         make_aligned_seqs(data=reverse_seqs,moltype=DNA,label_to_name=lambda x: x),
          variable_pos_freq, primer_name, cmp_truncate_len))
     
     return primers
