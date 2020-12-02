@@ -21,7 +21,7 @@ appended to the original fasta file name."""
 from os.path import basename
 upper = str.upper
 
-from cogent.parse.fasta import MinimalFastaParser
+from cogent3.parse.fasta import MinimalFastaParser
 
 def filter_fasta(fasta_seqs,
                  output_dir,

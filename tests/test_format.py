@@ -12,8 +12,8 @@ __email__ = "william.a.walters@colorado.edu"
 __status__ = "Release"
  
 
-from cogent.util.unit_test import TestCase, main
-from cogent import LoadSeqs, DNA
+from cogent3.util.unit_test import TestCase, main
+from cogent3 import LoadSeqs, DNA
 
 from primerprospector.format import write_formatted_primers, \
  write_overlap_primers, write_primers_summary, write_denovo_output_file, \

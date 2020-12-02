@@ -12,7 +12,7 @@ __status__ = "Release"
 
 from os.path import isdir
 
-from cogent.util.misc import parse_command_line_parameters, create_dir
+from primerprospector.cogentutil.misc import parse_command_line_parameters, create_dir
 from optparse import make_option
 
 from primerprospector.amplicons_histograms import generate_histograms

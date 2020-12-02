@@ -45,7 +45,7 @@ both files will be generated.
 
 from os.path import basename
 
-from cogent.parse.fasta import MinimalFastaParser
+from cogent3.parse.fasta import MinimalFastaParser
             
 from primerprospector.parse import get_fasta_filepaths, build_fasta_data,\
  get_primer_hits_data_pair, get_primer_hits_data

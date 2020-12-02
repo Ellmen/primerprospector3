@@ -19,9 +19,9 @@ from os import rename, remove
 from os.path import isfile
 upper = str.upper
 
-from cogent.app.vienna_package import RNAfold
-from cogent.seqsim.sequence_generators import SequenceGenerator, IUPAC_DNA
-from cogent import DNA
+from cogent3.app.vienna_package import RNAfold
+from cogent3.seqsim.sequence_generators import SequenceGenerator, IUPAC_DNA
+from cogent3 import DNA
 
 from primerprospector.parse import get_barcodes
 

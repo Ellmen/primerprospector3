@@ -57,10 +57,10 @@ use ("Agg")
 from pylab import plot, savefig, xlabel, ylabel, text,\
     hist, figure, title, xlim, ylim, xticks, yticks,\
     subplot, clf, close, subplots_adjust
-from cogent import LoadSeqs, DNA
-from cogent.core.moltype import IUPAC_DNA_ambiguities
-from cogent.align.align import make_dna_scoring_dict, local_pairwise
-from cogent.parse.fasta import MinimalFastaParser
+from cogent3 import load_unaligned_seqs, DNA
+from cogent3.core.moltype import IUPAC_DNA_ambiguities
+from cogent3.align.align import make_dna_scoring_dict, local_pairwise
+from cogent3.parse.fasta import MinimalFastaParser
 from numpy import arange
 
 from primerprospector.parse import parse_formatted_primers_data,\
@@ -377,7 +377,7 @@ def pair_hmm_align_unaligned_seqs(seqs,
          is desired.
     """
     
-    seqs = LoadSeqs(data=seqs,moltype=moltype,aligned=False)
+    seqs = load_unaligned_seqs(data=seqs,moltype=moltype,aligned=False)
     try:
         s1, s2 = seqs.values()
     except ValueError:

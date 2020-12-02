@@ -28,7 +28,7 @@ occuring bases.
 
 from os.path import basename
 
-from cogent import DNA
+from cogent3 import DNA
 
 from primerprospector.parse import get_primer_seq, get_hits_field,\
  get_primer_hits_data, parse_hits_data

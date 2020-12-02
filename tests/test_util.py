@@ -12,7 +12,7 @@ __email__ = "william.a.walters@colorado.edu"
 __status__ = "Release"
  
 
-from cogent.util.unit_test import TestCase, main
+from cogent3.util.unit_test import TestCase, main
 
 from primerprospector.util import get_DNA_to_numeric, get_numeric_to_DNA,\
  correct_primer_name, get_primer_direction

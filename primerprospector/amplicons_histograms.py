@@ -26,7 +26,7 @@ from matplotlib import use
 use('Agg')
 from matplotlib.pyplot import ylim
 from pylab import figure, savefig, figtext, yticks, xticks
-from cogent.parse.fasta import MinimalFastaParser
+from cogent3.parse.fasta import MinimalFastaParser
 
 from primerprospector.parse import parse_taxa_mapping_file, \
  get_amplicons_filepaths

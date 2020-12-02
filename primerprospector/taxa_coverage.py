@@ -45,7 +45,7 @@ from matplotlib.pyplot import ylim
 from pylab import figure, savefig, figtext, yticks, xticks
 from matplotlib import colors
 from matplotlib.pyplot import clf, close, subplots_adjust
-from cogent.util.misc import create_dir
+from cogent3.util.misc import create_dir
 
 from primerprospector.parse import get_primer_hits_data, get_hits_files, \
  parse_hits_data, parse_taxa_mapping_file, get_primer_hits_data_pair

@@ -12,7 +12,7 @@ __status__ = "Release"
 
 from os.path import isfile
 
-from cogent.util.misc import parse_command_line_parameters, create_dir
+from primerprospector.cogentutil.misc import parse_command_line_parameters, create_dir
 from optparse import make_option
 
 from primerprospector.check_primer_barcode_dimers import \

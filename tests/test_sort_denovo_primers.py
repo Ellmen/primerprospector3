@@ -16,12 +16,12 @@ from os.path import isdir, exists
 from os import remove, makedirs
 from shutil import rmtree
 
-from cogent.core.alphabet import AlphabetError
-from cogent import DNA, LoadSeqs
+from cogent3.core.alphabet import AlphabetError
+from cogent3 import DNA, LoadSeqs
 from numpy import array, bitwise_or
-from cogent.util.unit_test import TestCase, main
-from cogent.app.util import get_tmp_filename
-from cogent.util.misc import remove_files, get_random_directory_name
+from cogent3.util.unit_test import TestCase, main
+from primerprospector.old_cogent import get_tmp_filename
+from cogent3.util.misc import remove_files, get_random_directory_name
 
 from primerprospector.sort_denovo_primers import Primer, KnownPrimer,\
  convert_to_numeric, build_primers, find_overlap, find_3prime_match,\

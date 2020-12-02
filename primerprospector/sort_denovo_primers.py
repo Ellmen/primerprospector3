@@ -69,9 +69,9 @@ from operator import itemgetter
 from os import remove
 from copy import deepcopy
 
-from cogent import LoadSeqs, DNA
-from cogent.core.alphabet import AlphabetError
-from cogent.core.moltype import IUPAC_DNA_ambiguities, IUPAC_DNA_chars,\
+from cogent3 import load_unaligned_seqs, DNA
+from cogent3.core.alphabet import AlphabetError
+from cogent3.core.moltype import IUPAC_DNA_ambiguities, IUPAC_DNA_chars,\
  IUPAC_gap, make_pairs, DnaStandardPairs
 from numpy import array, bitwise_or, bitwise_and
 
@@ -370,8 +370,8 @@ def build_primers(primers_data,
         forward_seqs = forward_primers[n][1:]
         reverse_seqs = reverse_primers[n][1:]
         primers.append(Primer(header,
-         LoadSeqs(data=forward_seqs,moltype=DNA,label_to_name=lambda x: x),
-         LoadSeqs(data=reverse_seqs,moltype=DNA,label_to_name=lambda x: x),
+         load_unaligned_seqs(data=forward_seqs,moltype=DNA,label_to_name=lambda x: x),
+         load_unaligned_seqs(data=reverse_seqs,moltype=DNA,label_to_name=lambda x: x),
          variable_pos_freq, primer_name, cmp_truncate_len))
     
     return primers

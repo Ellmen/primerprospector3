@@ -14,7 +14,7 @@ __status__ = "Release"
  
 from os.path import isdir
 
-from cogent.util.misc import parse_command_line_parameters
+from primerprospector.cogentutil.misc import parse_command_line_parameters
 from optparse import make_option
 
 from primerprospector.generate_primers_denovo import search_sequences

@@ -13,9 +13,9 @@ __status__ = "Release"
 from os.path import basename
 from os import remove
 
-from cogent.util.unit_test import TestCase, main
-from cogent.app.util import get_tmp_filename
-from cogent.util.misc import remove_files
+from cogent3.util.unit_test import TestCase, main
+from primerprospector.old_cogent import get_tmp_filename
+from cogent3.util.misc import remove_files
 
 from primerprospector.clean_fasta import filter_fasta
 

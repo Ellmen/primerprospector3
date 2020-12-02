@@ -14,9 +14,9 @@ __status__ = "Release"
 from os.path import basename
 from os import remove, rmdir
 
-from cogent.util.unit_test import TestCase, main
-from cogent.app.util import get_tmp_filename
-from cogent.util.misc import remove_files, create_dir, get_random_directory_name
+from cogent3.util.unit_test import TestCase, main
+from primerprospector.old_cogent import get_tmp_filename
+from cogent3.util.misc import remove_files, create_dir, get_random_directory_name
 
 from primerprospector.parse import parse_primer_data, get_known_primers,\
  get_primers_data, parse_formatted_primers_data, get_fasta_filepaths,\

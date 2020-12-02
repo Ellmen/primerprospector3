@@ -33,12 +33,11 @@ primer objects and is not considered for later analysis.
 from os.path import isdir
 from copy import deepcopy
 
-from cogent.core.alphabet import AlphabetError
-from cogent import DNA, LoadSeqs
+from cogent3.core.alphabet import AlphabetError
+from cogent3 import DNA
 from optparse import OptionParser
 from numpy import array, bitwise_and
-from cogent.parse.fasta import MinimalFastaParser
-from cogent.seqsim.sequence_generators import IUPAC_DNA, SequenceGenerator
+from cogent3.parse.fasta import MinimalFastaParser
 
 from primerprospector.util import get_DNA_to_numeric
 from primerprospector.format import generate_denovo_output_file, \

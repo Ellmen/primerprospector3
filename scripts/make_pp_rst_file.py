@@ -24,7 +24,7 @@ import types
 import re
 from sys import exit, stderr
 
-from cogent.util.misc import parse_command_line_parameters
+from primerprospector.cogentutil.misc import parse_command_line_parameters
 
 #options_lookup = get_options_lookup()
 

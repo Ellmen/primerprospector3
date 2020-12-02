@@ -11,7 +11,7 @@ __email__ = "william.a.walters@colorado.edu"
 __status__ = "Release"
 
 
-from cogent.util.misc import parse_command_line_parameters, create_dir
+from primerprospector.cogentutil.misc import parse_command_line_parameters, create_dir
 from optparse import make_option
 
 from primerprospector.taxa_assignment_report import generate_taxa_report

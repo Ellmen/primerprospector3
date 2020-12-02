@@ -15,7 +15,7 @@ from glob import glob
 lower = str.lower
 upper = str.upper
 
-from cogent.parse.fasta import MinimalFastaParser
+from cogent3.parse.fasta import MinimalFastaParser
 
 from primerprospector.util import correct_primer_name
 

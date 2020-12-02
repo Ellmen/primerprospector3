@@ -17,8 +17,8 @@ from tempfile import NamedTemporaryFile
 strip = str.strip
 from itertools import count
 
-from cogent.parse.fasta import MinimalFastaParser
-from cogent.app.rdp_classifier import assign_taxonomy,\
+from cogent3.parse.fasta import MinimalFastaParser
+from cogent3.app.rdp_classifier import assign_taxonomy,\
  train_rdp_classifier_and_assign_taxonomy
 
 from primerprospector.parse import parse_taxa_mapping_file

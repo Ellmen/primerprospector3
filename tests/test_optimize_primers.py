@@ -13,10 +13,10 @@ __status__ = "Release"
 from os.path import basename, isdir, exists
 from shutil import rmtree
 
-from cogent.util.unit_test import TestCase, main
-from cogent.app.util import get_tmp_filename
-from cogent.util.misc import remove_files, create_dir, get_random_directory_name
-from cogent import DNA
+from cogent3.util.unit_test import TestCase, main
+from primerprospector.old_cogent import get_tmp_filename
+from cogent3.util.misc import remove_files, create_dir, get_random_directory_name
+from cogent3 import DNA
 
 from primerprospector.optimize_primers import generate_primers_pos_data,\
  filter_uneven_sequence_hits, reverse_sequence_hits, get_base_freqs,\

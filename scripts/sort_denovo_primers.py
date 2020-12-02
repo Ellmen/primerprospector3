@@ -19,7 +19,7 @@ File created 22 July 2009.
 """
 
 
-from cogent.util.misc import parse_command_line_parameters, create_dir
+from primerprospector.cogentutil.misc import parse_command_line_parameters, create_dir
 from optparse import make_option
 
 from primerprospector.sort_denovo_primers import analyze_primers

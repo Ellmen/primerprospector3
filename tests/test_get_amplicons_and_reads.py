@@ -13,9 +13,9 @@ __status__ = "Release"
 from os.path import exists
 from shutil import rmtree
 
-from cogent.util.unit_test import TestCase, main
-from cogent.util.misc import remove_files, get_random_directory_name
-from cogent.app.util import get_tmp_filename
+from cogent3.util.unit_test import TestCase, main
+from cogent3.util.misc import remove_files, get_random_directory_name
+from primerprospector.old_cogent import get_tmp_filename
 
 from primerprospector.get_amplicons_and_reads import generate_paired_amplicons,\
  generate_unidirectional_amplicons, get_output_name_single_primer,\
