@@ -253,7 +253,7 @@ class KnownPrimer(object):
          if a new primer is a complete duplication of a known primer """
     
         self.name = name
-        self.seq = DNA.makeSequence(seq,Name=name)
+        self.seq = DNA.make_seq(seq,Name=name)
         self.trunc_seq = convert_to_numeric(self.seq[-trunc_len:])
         if len(self.trunc_seq) < trunc_len:
             raise ValueError("Primer in known primers file %s " % name +\

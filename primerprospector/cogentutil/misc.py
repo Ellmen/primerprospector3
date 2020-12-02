@@ -16,7 +16,7 @@ from pickle import dumps, loads
 from gzip import GzipFile
 import hashlib
 # import parse_command_line_parameters for backward compatibility
-from cogent.util.option_parsing import parse_command_line_parameters
+from primerprospector.cogentutil.option_parsing import parse_command_line_parameters
 
 __author__ = "Rob Knight"
 __copyright__ = "Copyright 2007-2016, The Cogent Project"

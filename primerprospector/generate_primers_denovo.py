@@ -196,10 +196,10 @@ def build_seq_data(seq,
     search_range: optional restrictive search range in the aligned seq for
       conserved sites."""
     
-    aligned_seq=DNA.makeSequence(seq)
+    aligned_seq=DNA.make_seq(seq)
     # remove gap characters
-    unaligned_seq=str(DNA.makeSequence(seq).degap())
-    gaps=aligned_seq.gapMaps()
+    unaligned_seq=str(DNA.make_seq(seq).degap())
+    gaps=aligned_seq.gap_maps()
     
     if search_range:
         primer_start = get_corrected_index(seq,int(search_range.split(":")[0]))

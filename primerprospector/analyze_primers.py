@@ -630,7 +630,7 @@ def get_primers(primers_data=None,
     # If both primer name and seq provided, return single DNA sequence object
     # for that primer
     if primer_name and primer_sequence:
-        primers.append(DNA.makeSequence(primer_sequence, Name=primer_name))
+        primers.append(DNA.make_seq(primer_sequence, Name=primer_name))
         return primers
     
     
@@ -651,7 +651,7 @@ def get_primers(primers_data=None,
         # Search raw_primers for primer name that matches one provided
         for p in raw_primers:
             if p[0] == primer_name:
-                primers.append(DNA.makeSequence(p[1], Name=primer_name))
+                primers.append(DNA.make_seq(p[1], Name=primer_name))
                 return primers
         # If primer name not found, raise value error
         raise ValueError('Primer %s ' % primer_name +'not found in input '+\
@@ -660,7 +660,7 @@ def get_primers(primers_data=None,
          
     # If not using a single primer, build all primers in input primers file
     for p in raw_primers:
-        primers.append(DNA.makeSequence(p[1], p[0]))
+        primers.append(DNA.make_seq(p[1], p[0]))
         
     # Raise error if nothing built from input file
     if not(primers):
