@@ -14,6 +14,7 @@ __status__ = "Release"
 """ Contains file formatting, IO for PrimerProspector modules """
 
 from os.path import basename
+from string import ascii_uppercase as uppercase, ascii_lowercase as lowercase
 
 def write_formatted_primers(f_primers_sorted, 
                             r_primers_sorted,
