@@ -83,9 +83,9 @@ def get_outf_paths(output_dir,
     primer: DNA.Sequence object containing primer sequence, name
     fasta_filepath: fasta filepath against which primer is tested."""
     
-    graph_out_fp = output_dir + "/" + primer.Name + "_" +\
+    graph_out_fp = output_dir + "/" + primer.name + "_" +\
      basename(fasta_filepath).split('.')[0] + ".ps"
-    hits_out_fp = output_dir + "/" + primer.Name + "_" +\
+    hits_out_fp = output_dir + "/" + primer.name + "_" +\
      basename(fasta_filepath).split('.')[0] + "_hits.txt"
     
     return graph_out_fp, hits_out_fp
@@ -166,21 +166,22 @@ def primer_hit_histogram(data,
 
     
     if max_cap:
-        x_axis_labels = range(0, max_cap+1)
+        x_axis_labels = list(range(0, max_cap+1))
         # Set last value of x axis labels to have a "+" following it to 
         # indicate cap
         x_axis_labels[-1] = str(x_axis_labels[-1]) + "+"
     else:
         x_axis_labels = arange(0, int(max_bin), bin_size)
         
+    x_axis_labels += [''] * (7 - len(x_axis_labels)) # Augment with empty labels
     xticks(x_axis_values, x_axis_labels, size=7)
     xlim(min_x, max_x+1)
     
     if y_axis_size:
         # Use predetermined max size
         y_tick_step = int(0.2*y_axis_size) or 2
-        yticks(range(0, y_axis_size+2, y_tick_step), size=7)
-        ylim(0, y_axis_size)
+        yticks(range(0, int(y_axis_size+2), y_tick_step), size=7)
+        ylim(0, int(y_axis_size))
     else:
         # Use max size of current data set
         y_tick_step = int(0.2*max_data_points) or 2
@@ -281,22 +282,22 @@ def primer_to_match_query(primer):
     
     primer: Sequence object containing primer sequence and name
     """
-    '''if primer.Name.endswith('f'):
+    '''if primer.name.endswith('f'):
         query_primer = str(primer)
-    elif primer.Name.endswith('r'):
+    elif primer.name.endswith('r'):
         query_primer = str(primer.rc())
     else:
         raise ValueError,\
          "Primer name must end with 'f' or 'r' to indicate forward or reverse."
     return query_primer'''
     
-    if primer.Name.split("_")[0].endswith('f'):
+    if primer.name.split("_")[0].endswith('f'):
         query_primer = str(primer)
-    elif primer.Name.split("_")[0].endswith('r'):
+    elif primer.name.split("_")[0].endswith('r'):
         query_primer = str(primer.rc())
     else:
         raise_(ValueError,\
-         '%s not named correctly, all primers ' % primer.Name +\
+         '%s not named correctly, all primers ' % primer.name +\
          'must start with an alphanumeric value '+\
          'followed by "f" or "r".  Any underscores should occur after this '+\
          'name.  Example: 219f_bacterial')
@@ -377,9 +378,9 @@ def pair_hmm_align_unaligned_seqs(seqs,
          is desired.
     """
     
-    seqs = make_unaligned_seqs(data=seqs,moltype=moltype,aligned=False)
+    seqs = make_unaligned_seqs(data=seqs,moltype=moltype)
     try:
-        s1, s2 = seqs.values()
+        s1, s2 = seqs.seq_data
     except ValueError:
         raise ValueError("Pairwise aligning of seqs requires exactly two seqs.")
     
@@ -419,8 +420,8 @@ def local_align_primer_seq(primer,
 
     # Extract sequence of primer, target site, may have gaps in insertions
     # or deletions have occurred.
-    primer_hit = str(alignment.Seqs[0])
-    target_hit = str(alignment.Seqs[1])
+    primer_hit = str(alignment.seqs[0])
+    target_hit = str(alignment.seqs[1])
     
     # Get index of primer hit in target sequence.
     try:
@@ -470,14 +471,14 @@ def score_primer(primer,
         tp_len = len(primer_hit)
     
     # Get slices of 3', non 3', and last base regions of the primer & target
-    if primer.Name.split('_')[0].endswith('f'):
+    if primer.name.split('_')[0].endswith('f'):
         primer_non_tp = primer_hit[:-tp_len]
         primer_tp = primer_hit[-tp_len:-1]
         primer_last_base = primer_hit[-1]
         target_non_tp = target_hit[:-tp_len]
         target_tp = target_hit[-tp_len:-1]
         target_last_base = target_hit[-1]
-    elif primer.Name.split('_')[0].endswith('r'):
+    elif primer.name.split('_')[0].endswith('r'):
         primer_non_tp = primer_hit[tp_len:]
         primer_tp = primer_hit[1:tp_len]
         primer_last_base = primer_hit[0]
@@ -630,7 +631,7 @@ def get_primers(primers_data=None,
     # If both primer name and seq provided, return single DNA sequence object
     # for that primer
     if primer_name and primer_sequence:
-        primers.append(DNA.make_seq(primer_sequence, Name=primer_name))
+        primers.append(DNA.make_seq(primer_sequence, name=primer_name))
         return primers
     
     
@@ -651,7 +652,7 @@ def get_primers(primers_data=None,
         # Search raw_primers for primer name that matches one provided
         for p in raw_primers:
             if p[0] == primer_name:
-                primers.append(DNA.make_seq(p[1], Name=primer_name))
+                primers.append(DNA.make_seq(p[1], name=primer_name))
                 return primers
         # If primer name not found, raise value error
         raise ValueError('Primer %s ' % primer_name +'not found in input '+\
@@ -706,7 +707,7 @@ def get_hits_data(primer,
     
     
     # Contains header, parameters, comments for the output hits file
-    hits_lines = ["# Primer: %s 5'-%s-3'" % (primer.Name, primer),
+    hits_lines = ["# Primer: %s 5'-%s-3'" % (primer.name, primer),
      '# Input fasta file: %s' % basename(fasta_fp.name),
      '# Parameters',
      '# 3\' length: %d' % tp_len,
@@ -942,7 +943,7 @@ def analyze_primers(fasta_fps,
     
     # Generate hits file 
     generate_hits_file_and_histogram(\
-         primers,[p.Name for p in primers], fasta_filepaths,\
+         primers,[p.name for p in primers], fasta_filepaths,\
          max_mismatches=4, output_dir=output_dir, verbose = verbose,\
          tp_len=tp_len, last_base_mm=last_base_mm, tp_mm=tp_mm,\
          non_tp_mm=non_tp_mm, tp_gap=tp_gap, non_tp_gap=non_tp_gap)
