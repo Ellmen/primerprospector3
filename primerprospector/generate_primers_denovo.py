@@ -4,7 +4,9 @@
 #created 7-2-09
 
 from __future__ import division
+from __future__ import print_function
 
+from future.utils import raise_
 __author__ = "William A. Walters"
 __copyright__ = "Copyright 2010, The PrimerProspector project"
 __credits__ = ["William A. Walters", "Greg Caporaso", "Rob Knight"]
@@ -152,7 +154,7 @@ def iterate_target_sequences(input_fasta_files,
              sequence_length,initial_primers, search_range)
         fasta_f.close()
     if len(initial_primers)==0:
-        raise ValueError,('Cannot find any primers from the given fasta '+\
+        raise ValueError('Cannot find any primers from the given fasta '+\
          'files, please check file format, sensitivity/specificity, '+\
          'and search_range parameters.')
     return initial_primers
@@ -352,7 +354,7 @@ def find_specific_primer_matches(primers,
     seq_length=len(integer_mapped_seq)
     
     if len(unaligned_seq)==0:
-        raise ValueError,('unaligned sequence contains no data.')
+        raise_(ValueError,('unaligned sequence contains no data.'))
     
     for p in range(len(primers)):
         corrected_index = get_corrected_index(seq,primers[p].aligned_index)
@@ -405,7 +407,7 @@ def find_sensitive_primer_matches(primers,
     bad_primers=[]
     seq_length=len(integer_mapped_seq)
     if len(unaligned_seq)==0:
-        raise ValueError,('unaligned_seq contains no data.')
+        raise_(ValueError,('unaligned_seq contains no data.'))
     
     for p in range(len(primers)):
         corrected_index = get_corrected_index(seq,primers[p].aligned_index)
@@ -591,13 +593,13 @@ def search_sequences(input_fasta_filepath,
     # Check input and output files before generating data
 
     if isdir(output_f):
-        raise IOError,('%s is a directory, please specify a file path.' \
+        raise IOError('%s is a directory, please specify a file path.' \
          % output_f)
     
     try:
         output_filepath=open(output_f, 'w')
     except IOError:
-        raise IOError,('Unabled to open output filepath %s' %\
+        raise IOError('Unabled to open output filepath %s' %\
          output_f)
         
     if standard_index_file:
@@ -605,17 +607,17 @@ def search_sequences(input_fasta_filepath,
             test_alignment_file = open(standard_index_file, "U")
             test_alignment_file.close()
         except IOError:
-            raise IOError,('Unable to open standard index file %s'%\
+            raise IOError('Unable to open standard index file %s'%\
              standard_index_file)
              
     if log_filepath:
         if isdir(log_filepath):
-            raise IOError,('log_filepath %s is a directory, please specify '+\
+            raise IOError('log_filepath %s is a directory, please specify '+\
              'a filepath.' % log_filepath)
         try:
             test_log_f = open(log_filepath, 'w')
         except IOError:
-            raise IOError,('Unable to open log file %s' %\
+            raise IOError('Unable to open log file %s' %\
              log_filepath)
     
     region_slice=full_primer_length-sequence_length
@@ -624,7 +626,7 @@ def search_sequences(input_fasta_filepath,
     if log_filepath:
         log_f = open(log_filepath, 'w')
     if verbose:
-        print "Building prospective primers"
+        print("Building prospective primers")
     if log_filepath:
         log_f.write("Building prosective primers\n")
         
@@ -633,7 +635,7 @@ def search_sequences(input_fasta_filepath,
     percent_match, search_range)
     
     if verbose:
-        print "Constructing primer objects"
+        print("Constructing primer objects")
     if log_filepath:
         log_f.write("Constructing primer objects\n")
 
@@ -648,19 +650,19 @@ def search_sequences(input_fasta_filepath,
             seq_total_exclude=1
   
     if verbose and exclude_fasta_filepath:
-        print "Counting sequences for excluded fasta file(s)"
+        print("Counting sequences for excluded fasta file(s)")
     if log_filepath:
         log_f.write("Counting sequences for excluded fasta file(s)\n")
 
     if exclude_fasta_filepath:
         seq_total_exclude=get_sequence_count(exclude_fasta_files)
     if verbose and exclude_fasta_filepath:
-        print "Total sequences: %d" % seq_total_exclude
+        print("Total sequences: %d" % seq_total_exclude)
     if log_filepath and exclude_fasta_filepath:
         log_f.write("Total sequences: %d\n" % seq_total_exclude)
         
     if verbose and exclude_fasta_filepath:
-        print "Finding specific hits"
+        print("Finding specific hits")
     if log_filepath and exclude_fasta_filepath:
         log_f.write("Finding specific hits\n")
     
@@ -671,13 +673,13 @@ def search_sequences(input_fasta_filepath,
     
     seq_total_target=get_sequence_count(input_fasta_files)
     if verbose:
-        print "Total number of target sequences: %d" % seq_total_target
+        print("Total number of target sequences: %d" % seq_total_target)
     if log_filepath:
         log_f.write("Total number of target sequences: %d\n" \
         % seq_total_target)
 
     if verbose:
-        print "Finding sensitive primer regions."
+        print("Finding sensitive primer regions.")
     if log_filepath:
         log_f.write("Finding sensitive primer regions.\n")
        
@@ -703,7 +705,7 @@ def search_sequences(input_fasta_filepath,
     bool(exclude_fasta_filepath))
     
     if verbose:
-        print "Module complete"
+        print("Module complete")
     if log_filepath:
         log_f.write("Module complete\n")
     

@@ -123,11 +123,11 @@ def main():
      'weighted_score']
     
     if score_type not in valid_score_types:
-        raise ValueError, ('Score type must be one of the following: '+\
+        raise ValueError('Score type must be one of the following: '+\
          '%s' % ", ".join(valid_score_types))
          
     if taxa_depth not in range(1, 10):
-        raise ValueError, ('Taxa depth should be a positive integer in the '+\
+        raise ValueError('Taxa depth should be a positive integer in the '+\
          'range of 1 to 10.')
     
     # create output directory if not present

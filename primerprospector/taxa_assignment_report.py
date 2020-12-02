@@ -11,10 +11,10 @@ __email__ = "william.a.walters@colorado.edu"
 __status__ = "Release"
 
 import re
-from string import lower
+lower = str.lower
 from os.path import basename
 from tempfile import NamedTemporaryFile
-from string import strip
+strip = str.strip
 from itertools import count
 
 from cogent.parse.fasta import MinimalFastaParser
@@ -178,7 +178,7 @@ class RdpTree(object):
         """
         lineage = lineage.__iter__()
         try:
-            taxon = lineage.next()
+            taxon = next(lineage)
             if taxon not in self.children:
                 self.children[taxon] = RdpTree(name=taxon, parent=self)
             self.children[taxon].insert_lineage(lineage)
@@ -194,7 +194,7 @@ class RdpTree(object):
             counter = count(0)
 
         # Assign ID to current node; used by child nodes
-        self.id = counter.next()
+        self.id = next(counter)
 
         if self.parent is None:
             # do not print line for Root node
@@ -220,7 +220,7 @@ class RdpTree(object):
             retval = '*'.join(map(str, fields)) + "\n"
 
         # Recursively append lines from sorted list of subtrees
-        child_names = self.children.keys()
+        child_names = list(self.children.keys())
         child_names.sort()
         subtrees = [self.children[name] for name in child_names]
         for subtree in subtrees:

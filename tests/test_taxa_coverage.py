@@ -763,7 +763,7 @@ class TaxaCoverageTests(TestCase):
         
         for curr_fp in expected_pdf_fps:
             if not isfile(curr_fp):
-                raise ValueError,('Expected pdf %s not found.' % curr_fp)
+                raise ValueError('Expected pdf %s not found.' % curr_fp)
                 
         # Test for proper contents of log, coverage files
         f_log_fp =\
@@ -904,7 +904,7 @@ class TaxaCoverageTests(TestCase):
         
         for graph in expected_graph_fps:
             if not isfile(graph):
-                raise ValueError,('Expected graph %s not created.' % graph)
+                raise ValueError('Expected graph %s not created.' % graph)
                 
     def test_get_curr_taxa(self):
         """ Returns taxa key correctly, handles 'uncultured' taxa """

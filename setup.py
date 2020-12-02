@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # File created on 17 Feb 2010, modified 11-16-2010 by W. Walters
 from __future__ import division
+from __future__ import print_function
 from distutils.core import setup
 from os import chdir, getcwd, listdir
 from os.path import join, abspath
@@ -40,21 +41,21 @@ def build_html():
     call(["make", "html"])
     chdir(cwd)
     index_html_path = join(abspath(doc_dir),'_build','html','index.html')
-    print "Local documentation built with Sphinx. "+\
+    print("Local documentation built with Sphinx. "+\
           "Open to following path with a web browser:\n%s" %\
-            index_html_path
+            index_html_path)
 
 try:
     import cogent
 except ImportError:
-    print "PyCogent not installed but required. (Is it installed? Is it in the current user's $PYTHONPATH or site-packages?) See http://pycogent.sourceforge.net."
+    print("PyCogent not installed but required. (Is it installed? Is it in the current user's $PYTHONPATH or site-packages?) See http://pycogent.sourceforge.net.")
     exit(1)
 
 pycogent_version = tuple([int(v) \
         for v in re.split("[^\d]", cogent.__version__) if v.isdigit()])
         
 if pycogent_version < (1,4):
-    print "PyCogent >= 1.4.0 required, but %s is installed." % cogent.__version__
+    print("PyCogent >= 1.4.0 required, but %s is installed." % cogent.__version__)
     exit(1)
     
 setup(name='PrimerProspector',
@@ -72,7 +73,7 @@ setup(name='PrimerProspector',
 )
 
 if doc_imports_failed:
-    print "Sphinx not installed, so cannot build local html documentation."
+    print("Sphinx not installed, so cannot build local html documentation.")
 else:
     build_html()
     

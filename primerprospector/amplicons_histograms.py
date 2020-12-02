@@ -19,7 +19,7 @@ __status__ = "Release"
     """
     
 from os.path import basename
-from string import upper
+upper = str.upper
 
 from numpy import arange
 from matplotlib import use
@@ -98,7 +98,7 @@ def sort_amplicons(raw_amplicons_data,
         try:
             domain = taxa_mapping[amplicon].split(';')[0]
         except KeyError:
-            raise KeyError, ('Sequence ID %s not found in ' %\
+            raise KeyError('Sequence ID %s not found in ' %\
              amplicon + 'taxonomy mapping file.')
         if upper(domain).count("ARCHAEA"):
             try:
@@ -369,7 +369,7 @@ def generate_histograms(amplicons_filepath,
         try:
             taxa_map = open(taxa_map_filepath, "U")
         except IOError:
-            raise IOError, ('Unable to open taxa mapping file, please check '+\
+            raise IOError('Unable to open taxa mapping file, please check '+\
              'filepath.')
         
         taxa_mapping = parse_taxa_mapping_file(taxa_map)

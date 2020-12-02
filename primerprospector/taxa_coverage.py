@@ -34,7 +34,8 @@ __status__ = "Release"
 
 
 from os.path import basename
-from string import capitalize, lower
+capitalize = str.capitalize
+lower = str.lower
 from math import ceil
 
 from numpy import arange
@@ -122,7 +123,7 @@ def get_coverage_data_primer_pair(pair_hits_data,
      'weighted_score']
      
     if score_type not in valid_score_types:
-        raise ValueError,('score_type %s not a valid score type.' % score_type)
+        raise ValueError('score_type %s not a valid score type.' % score_type)
         
     if score_type == 'weighted_score':
         target_score_index = [weighted_score_index]
@@ -148,7 +149,7 @@ def get_coverage_data_primer_pair(pair_hits_data,
             seq_id_r = hit_line_r[seq_id_index]
             
             if seq_id != seq_id_r:
-                raise ValueError,('Forward and reverse sequence IDs do not '+\
+                raise ValueError('Forward and reverse sequence IDs do not '+\
                  'match.  See forward ID %s, reverse ID %s.' %\
                  (seq_id, seq_id_r))
             
@@ -273,7 +274,7 @@ def get_coverage_data_single_primer(hits_data,
      'weighted_score']
      
     if score_type not in valid_score_types:
-        raise ValueError,('score_type %s not a valid score type.' % score_type)
+        raise ValueError('score_type %s not a valid score type.' % score_type)
         
     if score_type == 'weighted_score':
         target_score_index = [weighted_score_index]
@@ -905,7 +906,7 @@ def graph_taxa_coverage(hits_fps,
         primer_pairs = get_primer_pairs(hits_f)
         
         if not primer_pairs:
-            raise ValueError,('No valid forward and reverse primer pairs '+\
+            raise ValueError('No valid forward and reverse primer pairs '+\
              'found, please check input filepaths/directory if using the -p '+\
              'parameter.')
              

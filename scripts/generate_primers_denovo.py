@@ -2,6 +2,7 @@
 # File created on 02 Jun 2010
 from __future__ import division
 
+from future.utils import raise_
 __author__ = "William Walters"
 __copyright__ = "Copyright 2010, The Primer Prospector Project"
 __credits__ =  ["William Walters"]
@@ -100,25 +101,25 @@ def main():
 
     if float(opts.specificity_threshold<0.001) or \
      float(opts.specificity_threshold)>0.9:
-        raise ValueError,('Specificity Thresholds expected to be in '+\
+        raise ValueError('Specificity Thresholds expected to be in '+\
         'range 0.001 to 0.90')
         
     if int(opts.sequence_length) not in range(1,15):
-        raise ValueError,\
-    ('Sequence length argument expected to be in range 1-15')
+        raise_(ValueError,\
+    ('Sequence length argument expected to be in range 1-15'))
     if float(opts.percent_match) < 0.01 or float(opts.percent_match)>1.0:
-        raise ValueError,\
-    ('Percent match argument expected to be in range 0.1-1.0')
+        raise_(ValueError,\
+    ('Percent match argument expected to be in range 0.1-1.0'))
 
     if int(opts.full_primer_length) not in range (10,40):
-        raise ValueError,('primer length expected to be 10-40 base pairs.')
+        raise_(ValueError,('primer length expected to be 10-40 base pairs.'))
         
     if opts.search_range:
         try:
             start_index = int(opts.search_range.split(":")[0])
             end_index = int(opts.search_range.split(":")[1])
         except IndexError:
-            raise IndexError, ('search_range option needs to be two integers '+\
+            raise IndexError('search_range option needs to be two integers '+\
              'separated by a colon.  Example:  -r 1000:2500')
         
     search_sequences(input_fasta_filepath = opts.target_seqs,

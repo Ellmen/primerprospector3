@@ -12,7 +12,7 @@ __email__ = "william.a.walters@colorado.edu"
 __status__ = "Release"
  
 
-from string import lower
+lower = str.lower
 from os.path import basename
 
 """ Contains dictionaries and data for usage in primer design and analysis,
@@ -59,7 +59,7 @@ def get_primer_direction(hits_file):
     elif hits_name.endswith("r"):
         return "r"
     else:
-        raise ValueError,('%s not named correctly, all hits files '%hits_name+\
+        raise ValueError('%s not named correctly, all hits files '%hits_name+\
          'must start with the numeric value indicating position of the '+\
          'primer followed by "f" or "r".  Example: 219f_bacteria_hits.txt')
     

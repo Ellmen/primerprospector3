@@ -80,7 +80,7 @@ def main():
      'weighted_score']
     
     if score_type not in valid_score_types:
-        raise ValueError, ('Score type must be one of the following: '+\
+        raise ValueError('Score type must be one of the following: '+\
          '%s' % ", ".join(valid_score_types))
     
     # create output directory if not present

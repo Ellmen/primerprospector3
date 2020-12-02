@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """Run all tests.
 """
+from __future__ import print_function
 from os import walk, environ
 from subprocess import Popen, PIPE, STDOUT
 from os.path import join, abspath, dirname, split
@@ -40,11 +41,11 @@ for root, dirs, files in walk(test_dir):
 unittest_names.sort()
 
 for unittest_name in unittest_names:
-    print "Testing %s:\n" % unittest_name
+    print("Testing %s:\n" % unittest_name)
     command = '%s %s -v' % (python_name, unittest_name)
     result = Popen(command,shell=True,universal_newlines=True,\
                    stdout=PIPE,stderr=STDOUT).stdout.read()
-    print result
+    print(result)
     if not unittest_good_pattern.search(result):
         if application_not_found_pattern.search(result):
             missing_application_tests.append(unittest_name)
@@ -73,7 +74,7 @@ if script_directory_found:
 
     for script_name in script_names:
         script_good_pattern = re.compile('^Usage: %s' % split(script_name)[1])
-        print "Testing %s." % script_name
+        print("Testing %s." % script_name)
         command = '%s %s -h' % (python_name, script_name)
         result = Popen(command,shell=True,universal_newlines=True,\
                        stdout=PIPE,stderr=STDOUT).stdout.read()
@@ -81,19 +82,19 @@ if script_directory_found:
             bad_scripts.append(script_name)
 
 if bad_tests:
-    print "\nFailed the following unit tests.\n%s" % '\n'.join(bad_tests)
+    print("\nFailed the following unit tests.\n%s" % '\n'.join(bad_tests))
     
 if missing_application_tests:
-    print "\nFailed the following unit tests, in part or whole due "+\
+    print("\nFailed the following unit tests, in part or whole due "+\
     "to missing external applications.\nDepending on the PrimerProspector "+\
     "features you plan to use, this may not be critical.\n%s"\
-     % '\n'.join(missing_application_tests)
+     % '\n'.join(missing_application_tests))
      
 if not script_directory_found:
-        print "\nCritical error: Failed to test scripts because the script directory could not be found.\n The most likely explanation for this failure is that you've installed PrimerProspector using setup.py, and forgot to specify the primerprospector_scripts_dir. This value shoud be set either to the directory you provided for --install-scripts, or /usr/local/bin if no value was provided to --install-scripts."
+        print("\nCritical error: Failed to test scripts because the script directory could not be found.\n The most likely explanation for this failure is that you've installed PrimerProspector using setup.py, and forgot to specify the primerprospector_scripts_dir. This value shoud be set either to the directory you provided for --install-scripts, or /usr/local/bin if no value was provided to --install-scripts.")
 else:
     if bad_scripts:
-        print "\nFailed the following script tests.\n%s" % '\n'.join(bad_scripts)
+        print("\nFailed the following script tests.\n%s" % '\n'.join(bad_scripts))
      
     if not (bad_tests or missing_application_tests or bad_scripts):
-        print "\nAll tests passed successfully."
+        print("\nAll tests passed successfully.")

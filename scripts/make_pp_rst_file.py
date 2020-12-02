@@ -2,6 +2,7 @@
 # File created on 15 Feb 2010
 # Modified from code written by Jesse Stombaugh on 11-9-2010
 from __future__ import division
+from __future__ import print_function
 
 __author__ = "Jesse Stombaugh"
 __copyright__ = "Copyright 2010, The Primer Prospector project"
@@ -129,7 +130,7 @@ def main():
         try:
             script=__import__(file)
         except ValueError:
-            print "Error"
+            print("Error")
         #print script.__maintainer__
         
         #Define output file path
@@ -147,15 +148,15 @@ def main():
                     convert_py_file_to_link(imported_script_description)
             #print new_script_description
             inputs=''
-            if script.script_info.has_key('required_options') and \
-             script.script_info['required_options']<>[]:
+            if 'required_options' in script.script_info and \
+             script.script_info['required_options']!=[]:
                 inputs= '\t\n\t**[REQUIRED]**\n\t\t\n'
                 for i in script.script_info['required_options']:
                     # when no default is provided in the call to make_option,
                     # the value of i.default is a tuple -- this try/except
                     # handles the diff types that i.default can be
                     try:
-                        if i.default<>'':
+                        if i.default!='':
                             if i.default[0] == 'NO':
                                 # i.default is a tuple, so defualt hasn't been
                                 # set by the user, and it should therefore be 
@@ -180,15 +181,15 @@ def main():
                     inputs=inputs+'\t'+str(cmd_arg)+'\n\t\t'+ new_help_str+'\n'
                     
                     
-            if script.script_info.has_key('optional_options') and  \
-             script.script_info['optional_options']<>[]:
+            if 'optional_options' in script.script_info and  \
+             script.script_info['optional_options']!=[]:
                 inputs=inputs + '\t\n\t**[OPTIONAL]**\n\t\t\n'
                 for i in script.script_info['optional_options']:
                     # when no default is provided in the call to make_option,
                     # the value of i.default is a tuple -- this try/except
                     # handles the diff types that i.default can be
                     try:
-                        if i.default<>'':
+                        if i.default!='':
                             if i.default[0] == 'NO':
                                 # i.default is a tuple, so defualt hasn't been
                                 # set by the user, and it should therefore be 
@@ -213,21 +214,21 @@ def main():
                     inputs=inputs+'\t'+str(cmd_arg)+'\n\t\t'+ new_help_str+'\n'
 
 
-            if not script.script_info.has_key('required_options') and not script.script_info.has_key('optional_options'):
+            if 'required_options' not in script.script_info and 'optional_options' not in script.script_info:
                 inputs='\t\n\tNone'
                 
             script_examples=''
             for ex in script.script_info['script_usage']:
                 example_title=ex[0].strip()
-                if example_title <> '':
+                if example_title != '':
                     if example_title.endswith(':'):
                         script_examples += '\n**' + ex[0] + '**\n'
                     else:
                         script_examples += '\n**' + ex[0] + ':**\n'
-                if ex[1] <> '':
+                if ex[1] != '':
                     script_ex=convert_py_file_to_link(ex[1])
                     script_examples += '\n' + script_ex + '\n'
-                if ex[2] <>'':
+                if ex[2] !='':
                     new_cmd=ex[2].replace('%prog',file+'.py')
                     script_examples += '\n::\n\n\t' + new_cmd + '\n'
     
@@ -248,8 +249,8 @@ def main():
             
             #script.close()
         except ValueError:
-            print "%s: This file does not contain the appropriate dictionary" \
-            % (file)
+            print("%s: This file does not contain the appropriate dictionary" \
+            % (file))
 
 
 if __name__ == "__main__":

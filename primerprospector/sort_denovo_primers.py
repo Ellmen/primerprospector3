@@ -4,6 +4,7 @@
 
 from __future__ import division
 
+from future.utils import raise_
 __author__ = "William Walters"
 __copyright__ = "Copyright 2010, The Primer Prospector Project"
 __credits__ =  ["William Walters"]
@@ -255,7 +256,7 @@ class KnownPrimer(object):
         self.seq = DNA.makeSequence(seq,Name=name)
         self.trunc_seq = convert_to_numeric(self.seq[-trunc_len:])
         if len(self.trunc_seq) < trunc_len:
-            raise ValueError,("Primer in known primers file %s " % name +\
+            raise ValueError("Primer in known primers file %s " % name +\
              "has a length less than the specified 3' length %d " % trunc_len)
         self.numeric_seq = convert_to_numeric(seq)
 
@@ -385,7 +386,7 @@ def check_for_std_alignment(primers_data):
             try:
                 std_index = line.split(",")[7]
             except IndexError:
-                raise IndexError,('Usage of the -a option requires that a '+\
+                raise IndexError('Usage of the -a option requires that a '+\
                  'standard alignment option (see generate_primers_denovo.py) '+\
                  'was used to generate accurate indices of de novo primers.')
             
@@ -445,7 +446,7 @@ def sort_primers_data(primers, sort_method):
         f_primers = sorted(f_primers, key = itemgetter(2))
         r_primers = sorted(r_primers, key = itemgetter(2))
     else:
-        raise ValueError,('Sort method must be "S", "P", or "O"')
+        raise_(ValueError,('Sort method must be "S", "P", or "O"'))
         
          
     # Generate list in format of a list of strings for writing to file
@@ -546,7 +547,7 @@ def find_3prime_match(test_primer,
                                          known_primer.name, 
                                          str(known_primer.seq) + "\n")))  
     else:
-        raise ValueError,('Known primer %s named incorrectly, ' %\
+        raise ValueError('Known primer %s named incorrectly, ' %\
          known_primer.name + 'should end with "f" or "r"')
     
 

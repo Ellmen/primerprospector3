@@ -12,7 +12,8 @@ __email__ = "william.a.walters@colorado.edu"
 __status__ = "Release"
 
 from glob import glob
-from string import lower, upper
+lower = str.lower
+upper = str.upper
 
 from cogent.parse.fasta import MinimalFastaParser
 
@@ -41,7 +42,7 @@ def parse_primer_data(primers_data):
             forward_primers[fields[1]].append(fields[2])
             reverse_primers[fields[1]].append(fields[3])
         else:
-            raise ValueError,('Invalid primer hits file, see line %s' % line) 
+            raise ValueError('Invalid primer hits file, see line %s' % line) 
             
     return forward_primers, reverse_primers
     
@@ -60,7 +61,7 @@ def get_known_primers(known_primers_data):
         # or r.  Leave other components unchanged.
         primer_name = correct_primer_name(primer_name)
         if not (primer_name.endswith('f') or primer_name.endswith('r')):
-            raise ValueError,('primer %s from known primers ' % primer_name +
+            raise ValueError('primer %s from known primers ' % primer_name +
              'file should end with "f" or "r" for forward or reverse primer')
         # Caps for DNA sequences
         seq = upper(n.split('\t')[1].strip())
@@ -101,7 +102,7 @@ def parse_formatted_primers_data(primers_data):
             # Stripped in case leading/trailing spaces are present
             primer_seq=upper(n.split('\t')[1].strip())
         except IndexError:
-            raise IndexError,('Incorrect file format for input primers file. '+\
+            raise IndexError('Incorrect file format for input primers file. '+\
              'Comments should be preceeded by "#" and the primers should be '+\
              'given as primer_name<tab>primer_sequence.')
         raw_primers.append((primer_name, primer_seq))
@@ -130,18 +131,18 @@ def get_fasta_filepaths(fasta_fps):
             test_file = open(fp, "U")
             test_file.close()
         except IOError:
-            raise IOError, ("Unable to open %s, please check filepath." % fp)
+            raise IOError("Unable to open %s, please check filepath." % fp)
             
     for fp in fasta_filepaths:
         f = open(fp, "U")
         for label, seq in MinimalFastaParser(f):
             # Halt and raise error if gaps or "U" nucleotides in sequences
             if "U" in seq:
-                raise ValueError,("Fasta file %s " % fp +\
+                raise ValueError("Fasta file %s " % fp +\
                 "contains 'U' characters, please replace with 'T' "+\
                 "characters.  Try running the module clean_fasta.py.")
             if "-" in seq or "." in seq:
-                raise ValueError,("Fasta file %s " % fp +\
+                raise ValueError("Fasta file %s " % fp +\
                 "contains gap characters ('-' or '.').  These characters can "+\
                 "be removed with the module clean_fasta.py")
         f.close()
@@ -189,7 +190,7 @@ def get_primer_hits_data_pair(primer_pair):
             
     # Test hits data to make sure forward and reverse hits files match
     if len(hits_data[0]) != len(hits_data[1]):
-        raise ValueError, ('Hits file pair does not have equal number of '+\
+        raise ValueError('Hits file pair does not have equal number of '+\
          'sequences.  Please check that %s and %s have the same input ' %\
          (primer_pair[0], primer_pair[1]) + 'fasta sequences.')
          
@@ -198,7 +199,7 @@ def get_primer_hits_data_pair(primer_pair):
         f_primer_seq_label = hits_data[0][n].split(',')[0]
         r_primer_seq_label = hits_data[1][n].split(',')[0]
         if f_primer_seq_label != r_primer_seq_label:
-            raise ValueError,('Mismatched sequence labels for files '+\
+            raise ValueError('Mismatched sequence labels for files '+\
              '%s and %s ' % (primer_pair[0], primer_pair[1]) + ' at labels '+\
              '%s and %s ' % (f_primer_seq_label, r_primer_seq_label))
          
@@ -213,7 +214,7 @@ def get_primer_hits_data(primer_hits):
     try:
         hits_f = open(primer_hits, "U")
     except IOError:
-        raise IOError,("Can not open specified hits filepath %s.  " %\
+        raise IOError("Can not open specified hits filepath %s.  " %\
          primer_hits)
     
     hits_data = []
@@ -237,7 +238,7 @@ def get_primer_seq(hits_fp):
     try:
         hits_f = open(hits_fp, "U")
     except IOError:
-        raise IOError,("Can not open specified hits filepath %s.  " %\
+        raise IOError("Can not open specified hits filepath %s.  " %\
          hits_fp)
     
     primer_line_start = "# Primer:"
@@ -263,7 +264,7 @@ def get_hits_field(hits_data,
     try:
         first_line = hits_data[0].split(',')[hits_index]
     except IndexError:
-        raise IndexError,('Unable to parse hits data, please check the '+\
+        raise IndexError('Unable to parse hits data, please check the '+\
          'format of the hits file and the hits_index utilized')
          
     hits_field_data = []
@@ -298,7 +299,7 @@ def parse_taxa_mapping_file(taxa_lines):
         curr_line = line.split('\t')
         # Check for correct tab separation-only 1 tab per line
         if len(curr_line) != 2:
-            raise ValueError,('taxa mapping file not formatted correctly, '+\
+            raise ValueError('taxa mapping file not formatted correctly, '+\
              'line %s not properly separated with a single tab.' % line)
              
         # Remove "Root" from taxa if present
@@ -336,7 +337,7 @@ def get_amplicons_filepaths(amplicons_filepath,
         try:
             current_f = open(amp_file, "U")
         except IOError:
-            raise IOError,('Unable to open %s, please check filepaths.' %\
+            raise IOError('Unable to open %s, please check filepaths.' %\
              amp_file)
         current_f.close()
         
@@ -391,7 +392,7 @@ def parse_hits_data(primer_hits_data,
      'weighted_score']
      
     if score_type not in valid_score_types:
-        raise ValueError,('score_type %s not a valid score type.' % score_type)
+        raise ValueError('score_type %s not a valid score type.' % score_type)
         
     if score_type == 'weighted_score':
         target_score_index = [weighted_score_index]

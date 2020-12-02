@@ -97,7 +97,7 @@ def main():
     valid_assignment_methods = ['rdp']
     
     if assignment_method not in valid_assignment_methods:
-        raise ValueError,('Assignment method must be one of the following: '+\
+        raise ValueError('Assignment method must be one of the following: '+\
          '%s' % ",".join(valid_assignment_methods))
          
     

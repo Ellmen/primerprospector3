@@ -67,7 +67,7 @@ def main():
     # is True
     if all_files:
         if not isdir(amplicons_filepath):
-            raise ValueError, ('-f needs to specify a directory ' +\
+            raise ValueError('-f needs to specify a directory ' +\
              'if -r option enabled.')
     
     # Create output directory if it does not exist

@@ -100,7 +100,7 @@ def get_linker_site_seqs(hits_data,
     """
     
     if primer_direction not in ['f', 'r']:
-        raise ValueError,('Primer direction must be "f" or "r".  Got '+\
+        raise ValueError('Primer direction must be "f" or "r".  Got '+\
          '%s instead.' % primer_direction)
     
     seq_hit_index = 1

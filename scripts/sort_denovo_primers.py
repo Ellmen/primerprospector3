@@ -4,6 +4,7 @@
 
 from __future__ import division
 
+from future.utils import raise_
 __author__ = "William Walters"
 __copyright__ = "Copyright 2010, The Primer Prospector Project"
 __credits__ =  ["William Walters"]
@@ -161,7 +162,7 @@ def main():
         test_file=open(hits_file,'r')
         test_file.close()
     except IOError:
-        raise IOError,('Unable to open specificity file.')
+        raise_(IOError,('Unable to open specificity file.'))
 
     # Create output directory if it does not exist
     create_dir(output_dir)
@@ -171,27 +172,27 @@ def main():
             test_file = open(known_primers_filepath, "r")
             test_file.close()
         except IOError:
-            raise IOError,('Unable to open known primers file: %s' %\
+            raise IOError('Unable to open known primers file: %s' %\
              known_primers_filepath)
             
         
 
     if (variable_pos_freq<0.01) or (variable_pos_freq>0.50):
-        raise ValueError,('variable base percentage parameter '+\
+        raise ValueError('variable base percentage parameter '+\
         'expected to be in range of 0.01 to 0.50')
     if sort_method not in ['S','O','P']:
-        raise ValueError,('sort_method must be "S","O", or "P"')
+        raise_(ValueError,('sort_method must be "S","O", or "P"'))
     # Check values of amplicon len for logical values
     if amplicon_len:
         try:
             amplicon_len_min, amplicon_len_max = \
              int(amplicon_len.split(":")[0]), int(amplicon_len.split(":")[1])
         except ValueError:
-            raise ValueError,("Invalid amplicon_len (-a) parameter.  "+\
+            raise ValueError("Invalid amplicon_len (-a) parameter.  "+\
              "Required form is -a X:Y, where X and Y are min and max int "+\
              "values.  For example, -a 200:500")
         except IndexError:
-            raise IndexError,("Invalid amplicon_len (-a) parameter.  "+\
+            raise IndexError("Invalid amplicon_len (-a) parameter.  "+\
              "Required form is -a X:Y, where X and Y are min and max int "+\
              "values.  For example, -a 200:500")
         

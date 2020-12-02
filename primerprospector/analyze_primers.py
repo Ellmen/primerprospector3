@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 from __future__ import division
+from __future__ import print_function
 
+from future.utils import raise_
 __author__ = "Greg Caporaso"
 __copyright__ = "Copyright 2010, The PrimerProspector project"
 __credits__ = ["William A. Walters", "Greg Caporaso", "Rob Knight"]
@@ -45,7 +47,8 @@ supplied, they should be separated by a colon.
 
 
 from os.path import basename
-from string import lower, upper
+lower = str.lower
+upper = str.upper
 import warnings
 warnings.filterwarnings('ignore', 'Not using MPI as mpi4py not found')
 
@@ -292,11 +295,11 @@ def primer_to_match_query(primer):
     elif primer.Name.split("_")[0].endswith('r'):
         query_primer = str(primer.rc())
     else:
-        raise ValueError,\
+        raise_(ValueError,\
          '%s not named correctly, all primers ' % primer.Name +\
          'must start with an alphanumeric value '+\
          'followed by "f" or "r".  Any underscores should occur after this '+\
-         'name.  Example: 219f_bacterial'
+         'name.  Example: 219f_bacterial')
     return query_primer
          
 
@@ -351,7 +354,7 @@ def match_scorer_ambigs(match=1,
         # try/except for a KeyError on the next step, but that would only 
         # test one of the characters)
         if x not in matches or y not in matches:
-            raise ValueError, "Unknown character: %s or %s" % (x,y)
+            raise_(ValueError, "Unknown character: %s or %s" % (x,y))
         if y in matches[x]:
             return match
         else:
@@ -378,8 +381,7 @@ def pair_hmm_align_unaligned_seqs(seqs,
     try:
         s1, s2 = seqs.values()
     except ValueError:
-        raise ValueError,\
-         "Pairwise aligning of seqs requires exactly two seqs."
+        raise ValueError("Pairwise aligning of seqs requires exactly two seqs.")
     
     try:
         gap_open = params['gap_open']
@@ -424,7 +426,7 @@ def local_align_primer_seq(primer,
     try:
         hit_start = query_sequence.index(target_hit.replace('-',''))
     except ValueError:
-        raise ValueError,('substring not found, query string %s, target_hit %s'\
+        raise ValueError('substring not found, query string %s, target_hit %s'\
          % (query_sequence, target_hit))
          
     
@@ -483,8 +485,7 @@ def score_primer(primer,
         target_tp = target_hit[1:tp_len]
         target_last_base = target_hit[0]
     else:
-        raise ValueError,\
-         "Primer name must end with 'f' or 'r' to indicate forward or reverse."
+        raise ValueError("Primer name must end with 'f' or 'r' to indicate forward or reverse.")
          
     # Count insertions and deletions due to gaps
     non_tp_gaps = primer_non_tp.count('-') + target_non_tp.count('-')
@@ -607,7 +608,7 @@ def get_primers(primers_data=None,
     # User must specify a primers filepath, or a primer_name and 
     # primer_sequence, error check for this.
     if not primers_data and not(primer_name and primer_sequence):
-        raise ValueError,("Missing primer(s) data.  User must specify either "+\
+        raise ValueError("Missing primer(s) data.  User must specify either "+\
          "a primers filepath, or a primer name and sequence.  See the -P, -p,"+\
          " and -s parameters.") 
     
@@ -622,7 +623,7 @@ def get_primers(primers_data=None,
         # Check primer name for proper 'r' or 'f' ending
         if not (primer_name.split('_')[0].endswith('f') or 
          primer_name.split('_')[0].endswith('r')):
-            raise ValueError, ('Primer name %s ' % primer_name +'does not '+\
+            raise ValueError('Primer name %s ' % primer_name +'does not '+\
              'end with "f" or "r".  The initial alphanumeric name of the '+\
              'primer must be followed by "f" or "r".  Example: 22f_archaeal')
     
@@ -640,7 +641,7 @@ def get_primers(primers_data=None,
     for p in raw_primers:
         if not(p[0].split('_')[0].endswith('f') or
          p[0].split('_')[0].endswith('r')):
-            raise ValueError,('Primer %s ' % p[0] +'does not end '+\
+            raise ValueError('Primer %s ' % p[0] +'does not end '+\
              'with "f" or "r".  The initial alphanumeric name of the '+\
              'primer must be followed by "f" or "r".  Example: 22f_archaeal')
     
@@ -653,7 +654,7 @@ def get_primers(primers_data=None,
                 primers.append(DNA.makeSequence(p[1], Name=primer_name))
                 return primers
         # If primer name not found, raise value error
-        raise ValueError,('Primer %s ' % primer_name +'not found in input '+\
+        raise ValueError('Primer %s ' % primer_name +'not found in input '+\
          'primers file, please add to primers file or specify sequence with '+\
          'the -s parameter.')
          
@@ -663,7 +664,7 @@ def get_primers(primers_data=None,
         
     # Raise error if nothing built from input file
     if not(primers):
-        raise ValueError,('No primers were read from input primers file, '+\
+        raise ValueError('No primers were read from input primers file, '+\
          'please check file format.')
     
     return primers
@@ -868,7 +869,7 @@ def generate_hits_file_and_histogram(\
         primer = primers[i]
         primer_id = primer_ids[i]
         if verbose:
-            print "Starting %s" % primer_id
+            print("Starting %s" % primer_id)
         for fasta_filepath in fasta_filepaths:
             
             fasta_fp = open(fasta_filepath, "U")

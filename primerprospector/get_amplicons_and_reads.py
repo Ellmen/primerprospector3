@@ -86,7 +86,7 @@ def generate_paired_amplicons(primer_hits_data,
      'weighted_score']
      
     if score_type not in valid_score_types:
-        raise ValueError,('score_type %s not a valid score type.' % score_type)
+        raise ValueError('score_type %s not a valid score type.' % score_type)
         
     if score_type == 'weighted_score':
         target_score_index = [weighted_score_index]
@@ -104,7 +104,7 @@ def generate_paired_amplicons(primer_hits_data,
         
         # Ensure that fasta labels match between hits files
         if line_f[label_index] != line_r[label_index]:
-            raise ValueError,('Hits files must be generated from the same '+\
+            raise ValueError('Hits files must be generated from the same '+\
              'fasta file soures.  The following fasta labels are different: '+\
              '%s, %s' % (line_f[label_index], line_r[label_index]))
              
@@ -138,7 +138,7 @@ def generate_paired_amplicons(primer_hits_data,
         try:
             amplicon=fasta_data[label][hit_index_f:hit_index_r]
         except IndexError:
-            raise IndexError,('Found fasta label %s ' % label + 'in hits '+\
+            raise IndexError('Found fasta label %s ' % label + 'in hits '+\
              'file that is not found in the input fasta file(s), please '+\
              'check fasta files to ensure they match those used to generate '+\
              'the hits files.')
@@ -191,7 +191,7 @@ def generate_unidirectional_amplicons(primer_hits_data,
      'weighted_score']
      
     if score_type not in valid_score_types:
-        raise ValueError,('score_type %s not a valid score type.' % score_type)
+        raise ValueError('score_type %s not a valid score type.' % score_type)
         
     if score_type == 'weighted_score':
         target_score_index = [weighted_score_index]
@@ -232,7 +232,7 @@ def generate_unidirectional_amplicons(primer_hits_data,
             try:
                 amplicon=fasta_data[label][hit_index:]
             except IndexError:
-                raise IndexError,('Found fasta label %s ' % label + 'in hits '+\
+                raise IndexError('Found fasta label %s ' % label + 'in hits '+\
                  'file that is not found in the input fasta file(s), please '+\
                  'check fasta files to ensure they match those used to  '+\
                  'generate the hits files.')
@@ -240,7 +240,7 @@ def generate_unidirectional_amplicons(primer_hits_data,
             try:
                 amplicon=fasta_data[label][0:hit_index]
             except IndexError:
-                raise IndexError,('Found fasta label %s ' % label + 'in hits '+\
+                raise IndexError('Found fasta label %s ' % label + 'in hits '+\
                  'file that is not found in the input fasta file(s), please '+\
                  'check fasta files to ensure they match those used to '+\
                  'generate the hits files.')
@@ -340,7 +340,7 @@ def generate_amplicons_from_hits_files(hits_files,
     else:
         single_hits = False
         if not forward_hits and reverse_hits:
-            raise ValueError,('Must specify a forward and reverse primer '+\
+            raise ValueError('Must specify a forward and reverse primer '+\
              'hits file when passing a pair of primer hits files.')
         
     if single_hits:
@@ -466,7 +466,7 @@ def get_hits_files(primer_hits):
     if primer_hits.count(":"):
         hits_files=primer_hits.split(":")
         if len(hits_files) != 2:
-            raise ValueError, ('This module can only accept a single or pair '+\
+            raise ValueError('This module can only accept a single or pair '+\
              'of primer hits files.')
     else:
         hits_files=[primer_hits]
@@ -477,7 +477,7 @@ def get_hits_files(primer_hits):
             test_f = open(f, "U")
             test_f.close()
         except IOError:
-            raise IOError,('Incorrect filepath for %s hits file.' % f)
+            raise IOError('Incorrect filepath for %s hits file.' % f)
             
     return hits_files
 

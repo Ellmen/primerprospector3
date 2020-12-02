@@ -116,7 +116,7 @@ def main():
     suppress_graphs = opts.suppress_graphs
     
     if not isfile(energy_parameters):
-        raise ValueError,('Specified path %s ' % energy_parameters +\
+        raise ValueError('Specified path %s ' % energy_parameters +\
          'for DNA energy parameters not a file.')
 
     

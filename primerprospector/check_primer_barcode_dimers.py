@@ -17,7 +17,7 @@ files displaying the secondary structure of these flagged sequences"""
 
 from os import rename, remove
 from os.path import isfile
-from string import upper
+upper = str.upper
 
 from cogent.app.vienna_package import RNAfold
 from cogent.seqsim.sequence_generators import SequenceGenerator, IUPAC_DNA
