@@ -1,3 +1,5 @@
+from random import choice
+
 from tempfile import gettempdir
 
 class FilePath(str):

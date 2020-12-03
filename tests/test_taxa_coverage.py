@@ -15,7 +15,7 @@ from shutil import rmtree
 
 from cogent3.util.unit_test import TestCase, main
 from primerprospector.old_cogent import get_tmp_filename
-from cogent3.util.misc import remove_files, create_dir, get_random_directory_name
+from primerprospector.cogentutil.misc import remove_files, create_dir, get_random_directory_name
 
 from primerprospector.taxa_coverage import get_coverage_data_primer_pair,\
  get_coverage_data_single_primer, get_coverage_filepath,\

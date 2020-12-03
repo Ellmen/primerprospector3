@@ -19,7 +19,7 @@ from os import remove
 from cogent3.core.alphabet import AlphabetError
 from cogent3.util.unit_test import TestCase, main
 from primerprospector.old_cogent import get_tmp_filename
-from cogent3.util.misc import remove_files
+from primerprospector.cogentutil.misc import remove_files
 
 from primerprospector.generate_primers_denovo import ProspectivePrimer, \
 get_number_seqs_for_primer,build_seq_data,convert_to_numeric,\

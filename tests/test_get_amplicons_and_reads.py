@@ -14,7 +14,7 @@ from os.path import exists
 from shutil import rmtree
 
 from cogent3.util.unit_test import TestCase, main
-from cogent3.util.misc import remove_files, get_random_directory_name
+from primerprospector.cogentutil.misc import remove_files, get_random_directory_name
 from primerprospector.old_cogent import get_tmp_filename
 
 from primerprospector.get_amplicons_and_reads import generate_paired_amplicons,\

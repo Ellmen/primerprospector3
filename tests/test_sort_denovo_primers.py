@@ -21,7 +21,7 @@ from cogent3 import DNA, LoadSeqs
 from numpy import array, bitwise_or
 from cogent3.util.unit_test import TestCase, main
 from primerprospector.old_cogent import get_tmp_filename
-from cogent3.util.misc import remove_files, get_random_directory_name
+from primerprospector.cogentutil.misc import remove_files, get_random_directory_name
 
 from primerprospector.sort_denovo_primers import Primer, KnownPrimer,\
  convert_to_numeric, build_primers, find_overlap, find_3prime_match,\

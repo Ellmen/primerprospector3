@@ -15,7 +15,7 @@ from os import remove
 
 from cogent3.util.unit_test import TestCase, main
 from primerprospector.old_cogent import get_tmp_filename
-from cogent3.util.misc import remove_files
+from primerprospector.cogentutil.misc import remove_files
 
 from primerprospector.clean_fasta import filter_fasta
 

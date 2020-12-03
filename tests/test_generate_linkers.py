@@ -16,7 +16,7 @@ from shutil import rmtree
 
 from cogent3.util.unit_test import TestCase, main
 from primerprospector.old_cogent import get_tmp_filename
-from cogent3.util.misc import remove_files, create_dir, get_random_directory_name
+from primerprospector.cogentutil.misc import remove_files, create_dir, get_random_directory_name
 from cogent3 import DNA
 
 from primerprospector.generate_linkers import calc_base_freqs,\

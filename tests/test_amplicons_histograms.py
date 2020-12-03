@@ -18,8 +18,8 @@ from shutil import rmtree
 
 from cogent3.util.unit_test import TestCase, main
 from primerprospector.old_cogent import get_tmp_filename
-from cogent3.util.misc import remove_files, create_dir
-from cogent3.util.misc import get_random_directory_name
+from primerprospector.cogentutil.misc import remove_files, create_dir
+from primerprospector.cogentutil.misc import get_random_directory_name
 
 from primerprospector.amplicons_histograms import get_amplicons_lens,\
  generate_histogram_combined, get_histogram_name, sort_combined_amplicons,\

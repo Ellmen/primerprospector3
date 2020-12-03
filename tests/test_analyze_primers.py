@@ -21,7 +21,7 @@ from cogent3.util.unit_test import TestCase, main
 from cogent3 import DNA
 from cogent3.parse.fasta import MinimalFastaParser
 from primerprospector.old_cogent import get_tmp_filename
-from cogent3.util.misc import remove_files, get_random_directory_name
+from primerprospector.cogentutil.misc import remove_files, get_random_directory_name
 
 
 
