@@ -265,8 +265,8 @@ class KnownPrimer(object):
 def pwm_to_dict(pwm):
     return [{
         'T': pos[0],
-        'A': pos[1],
-        'C': pos[2],
+        'C': pos[1],
+        'A': pos[2],
         'G': pos[3],
     } for pos in pwm]
 
