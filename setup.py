@@ -46,17 +46,17 @@ def build_html():
             index_html_path)
 
 try:
-    import cogent
+    import cogent3
 except ImportError:
-    print("PyCogent not installed but required. (Is it installed? Is it in the current user's $PYTHONPATH or site-packages?) See http://pycogent.sourceforge.net.")
+    print("cogent3 not installed but required. (Is it installed? Is it in the current user's $PYTHONPATH or site-packages?) See http://pycogent.sourceforge.net.")
     exit(1)
 
-pycogent_version = tuple([int(v) \
-        for v in re.split("[^\d]", cogent.__version__) if v.isdigit()])
+# pycogent_version = tuple([int(v) \
+#         for v in re.split("[^\d]", cogent3.__version__) if v.isdigit()])
         
-if pycogent_version < (1,4):
-    print("PyCogent >= 1.4.0 required, but %s is installed." % cogent.__version__)
-    exit(1)
+# if pycogent_version < (1,4):
+#     print("PyCogent >= 1.4.0 required, but %s is installed." % cogent.__version__)
+#     exit(1)
     
 setup(name='PrimerProspector',
       version=__version__,
