@@ -45,11 +45,11 @@ def build_html():
           "Open to following path with a web browser:\n%s" %\
             index_html_path)
 
-try:
-    import cogent3
-except ImportError:
-    print("cogent3 not installed but required. (Is it installed? Is it in the current user's $PYTHONPATH or site-packages?) See http://pycogent.sourceforge.net.")
-    exit(1)
+# try:
+#     import cogent3
+# except ImportError:
+#     print("cogent3 not installed but required. (Is it installed? Is it in the current user's $PYTHONPATH or site-packages?) See http://pycogent.sourceforge.net.")
+#     exit(1)
 
 # pycogent_version = tuple([int(v) \
 #         for v in re.split("[^\d]", cogent3.__version__) if v.isdigit()])
